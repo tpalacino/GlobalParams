@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GlobalParams</name>
+    </assembly>
+    <members>
+        <member name="T:GlobalParams.Wizard">
+            <summary>The wizard used to expose variables across multiple projects.</summary>
+        </member>
+        <member name="F:GlobalParams.Wizard.BeforeOpeningFileEvent">
+            <summary>Called before opening a project item that has the OpenInEditor attribute.</summary>
+        </member>
+        <member name="F:GlobalParams.Wizard.ProjectFinishedGeneratingEvent">
+            <summary>Called after a project has finished generating.</summary>
+        </member>
+        <member name="F:GlobalParams.Wizard.ProjectItemFinishedGeneratingEvent">
+            <summary>Called after a project item has finished generating.</summary>
+        </member>
+        <member name="F:GlobalParams.Wizard.RunFinishedEvent">
+            <summary>Called when the wizard is complete.</summary>
+        </member>
+        <member name="F:GlobalParams.Wizard.RunStartedEvent">
+            <summary>Called when the wizard first begins.</summary>
+        </member>
+        <member name="F:GlobalParams.Wizard.ShouldAddProjectItemEvent">
+            <summary>Called for item templates only to determine if the item should be added.</summary>
+        </member>
+        <member name="M:GlobalParams.Wizard.BeforeOpeningFile(EnvDTE.ProjectItem)">
+            <summary>This method is called before opening any item that has the OpenInEditor attribute.</summary>
+            <param name="projectItem">The item to be opened.</param>
+        </member>
+        <member name="M:GlobalParams.Wizard.ProjectFinishedGenerating(EnvDTE.Project)">
+            <summary>Called after a project has finished generating.</summary>
+            <param name="project">The project that was generated.</param>
+        </member>
+        <member name="M:GlobalParams.Wizard.ProjectItemFinishedGenerating(EnvDTE.ProjectItem)">
+            <summary>This method is only called for item templates, not for project templates.</summary>
+            <param name="projectItem">The item that was generated.</param>
+        </member>
+        <member name="M:GlobalParams.Wizard.RunFinished">
+            <summary>This method is called when the wizard is complete.</summary>
+        </member>
+        <member name="M:GlobalParams.Wizard.RunStarted(System.Object,System.Collections.Generic.Dictionary{System.String,System.String},Microsoft.VisualStudio.TemplateWizard.WizardRunKind,System.Object[])">
+            <summary>This method is called when the wizard first begins.</summary>
+        </member>
+        <member name="M:GlobalParams.Wizard.ShouldAddProjectItem(System.String)">
+            <summary>This method is only called for item templates, not for project templates.</summary>
+            <param name="filePath">The full path to the item.</param>
+            <returns>True if the item should be added, otherwise false.</returns>
+        </member>
+        <member name="M:GlobalParams.Wizard.IsMainTemplate(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>Determines if the project being generated is the top level template.</summary>
+            <param name="parms">The replacements dictionary that will include the solution name if it is the top level template.</param>
+            <returns>True if the replacements dictionary includes the solution name, otherwise false.</returns>
+        </member>
+        <member name="F:GlobalParams.Constants.SAFE_PROJECT_KEY">
+            <summary>The literal value "$safeprojectname$".</summary>
+        </member>
+        <member name="F:GlobalParams.Constants.SOLUTION_KEY">
+            <summary>The literal value "$specifiedsolutionname$".</summary>
+        </member>
+        <member name="F:GlobalParams.Constants.FORMAT_GLOBAL_KEY">
+            <summary>The literal value "$global{0}$".</summary>
+        </member>
+        <member name="T:GlobalParams.Parameters">
+            <summary>Storage for solution parameters.</summary>
+        </member>
+        <member name="F:GlobalParams.Parameters._parameters">
+            <summary>Private storage for the solution parameters.</summary>
+        </member>
+        <member name="M:GlobalParams.Parameters.Get(System.String)">
+            <summary>Gets the parameter by the specified <paramref name="key"/>.</summary>
+            <param name="key">The key.</param>
+            <returns>The parameter or an empty string.</returns>
+        </member>
+        <member name="M:GlobalParams.Parameters.Set(System.String,System.Object)">
+            <summary>Sets or the parameter by the specified <paramref name="key"/> to the specified <paramref name="value"/>.</summary>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:GlobalParams.Parameters.Has(System.String)">
+            <summary>Determines if parameter collection has an entry with the globalized version of the specified <paramref name="key"/>.</summary>
+            <param name="key">The key.</param>
+            <returns>True if the an entry was found, otherwise false.</returns>
+        </member>
+        <member name="M:GlobalParams.Parameters.HasPrivate(System.String)">
+            <summary>Determines if there is an entry with the specified <paramref name="key"/> in the parameter collection.</summary>
+            <param name="key">The key.</param>
+            <returns>True if the an entry was found, otherwise false.</returns>
+        </member>
+        <member name="M:GlobalParams.Parameters.Globalize(System.String)">
+            <summary>Creates a global parameter key from the specified <paramref name="value"/>.</summary>
+            <param name="value">The original key to globalize.</param>
+            <returns>A string value ready to be used as a global parameter key, or null.</returns>
+        </member>
+        <member name="M:GlobalParams.Parameters.Clear">
+            <summary>Clears the underlying parameter collection.</summary>
+        </member>
+        <member name="P:GlobalParams.Parameters.All">
+            <summary>Return the underlying parameter collection.</summary>
+        </member>
+    </members>
+</doc>
