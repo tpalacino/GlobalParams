@@ -3,7 +3,7 @@
 namespace GlobalParams
 {
 	/// <summary>Storage for solution parameters.</summary>
-	internal static class Parameters
+	public static class Parameters
 	{
 		#region Member Variables
 
@@ -33,7 +33,7 @@ namespace GlobalParams
 		/// <summary>Gets the parameter by the specified <paramref name="key"/>.</summary>
 		/// <param name="key">The key.</param>
 		/// <returns>The parameter or an empty string.</returns>
-		internal static object Get(string key)
+		public static object Get(string key)
 		{
 			object retVal = string.Empty;
 			string keyInternal = key.Globalize();
@@ -48,7 +48,7 @@ namespace GlobalParams
 		/// <summary>Sets or the parameter by the specified <paramref name="key"/> to the specified <paramref name="value"/>.</summary>
 		/// <param name="key">The key.</param>
 		/// <param name="value">The value.</param>
-		internal static void Set(string key, object value)
+		public static void Set(string key, object value)
 		{
 			string keyInternal = key.Globalize();
 
@@ -69,7 +69,7 @@ namespace GlobalParams
 		/// <summary>Determines if parameter collection has an entry with the globalized version of the specified <paramref name="key"/>.</summary>
 		/// <param name="key">The key.</param>
 		/// <returns>True if the an entry was found, otherwise false.</returns>
-		internal static bool Has(string key)
+		public static bool Has(string key)
 		{
 			return HasPrivate(key.Globalize());
 		}
@@ -89,7 +89,7 @@ namespace GlobalParams
 		/// <summary>Creates a global parameter key from the specified <paramref name="value"/>.</summary>
 		/// <param name="value">The original key to globalize.</param>
 		/// <returns>A string value ready to be used as a global parameter key, or null.</returns>
-		internal static string Globalize(this string value)
+		public static string Globalize(this string value)
 		{
 			string retVal = string.Empty;
 
