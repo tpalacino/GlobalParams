@@ -3,27 +3,117 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlobalParams", "GlobalParams\GlobalParams.csproj", "{B84E785C-9181-463D-B58F-DBB5DC1E26A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlobalParamsUI", "Installers\GlobalParamsUI\GlobalParamsUI.csproj", "{A60DB4E7-9297-4453-A09A-1F1E8303375E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installers", "Installers", "{8BB8C89B-CF84-4E95-BF22-156936F4F229}"
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "GlobalParamsBA", "Installers\GlobalParamsBA\GlobalParamsBA.wixproj", "{B92BC033-FFE5-4D1C-8F6D-2162957CA028}"
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "GlobalParamsMSI", "Installers\GlobalParamsMSI\GlobalParamsMSI.wixproj", "{98A5607E-B890-4B02-BF80-42535E4D7168}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{22299F88-51B1-4924-99C5-F2C8B25A7354}"
+	ProjectSection(SolutionItems) = preProject
+		Templates\[Content_Types].xml = Templates\[Content_Types].xml
+		Templates\extension.vsixmanifest = Templates\extension.vsixmanifest
+		Templates\GlobalParams.vsix = Templates\GlobalParams.vsix
+		Templates\License.rtf = Templates\License.rtf
+		Templates\Logo.png = Templates\Logo.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GlobalParams", "GlobalParams", "{E5C3786F-1E51-4F10-BDCA-114FC10A4DC6}"
+	ProjectSection(SolutionItems) = preProject
+		Templates\GlobalParams\GlobalParams.csproj = Templates\GlobalParams\GlobalParams.csproj
+		Templates\GlobalParams\GlobalParams.vstemplate = Templates\GlobalParams\GlobalParams.vstemplate
+		Templates\GlobalParams\GlobalParams.zip = Templates\GlobalParams\GlobalParams.zip
+		Templates\GlobalParams\Logo.png = Templates\GlobalParams\Logo.png
+		Templates\GlobalParams\Wizard.cs = Templates\GlobalParams\Wizard.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Properties", "Properties", "{400DC138-9037-4FE0-AC79-D115E8AF8628}"
+	ProjectSection(SolutionItems) = preProject
+		Templates\GlobalParams\Properties\AssemblyInfo.cs = Templates\GlobalParams\Properties\AssemblyInfo.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 2
+		SccNumberOfProjects = 5
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs10
 		SccLocalPath0 = .
 		SccProjectUniqueName1 = GlobalParams\\GlobalParams.csproj
 		SccProjectName1 = GlobalParams
 		SccLocalPath1 = GlobalParams
+		SccProjectUniqueName2 = Installers\\GlobalParamsUI\\GlobalParamsUI.csproj
+		SccProjectTopLevelParentUniqueName2 = GlobalParams.sln
+		SccProjectName2 = Installers/GlobalParamsUI
+		SccLocalPath2 = Installers\\GlobalParamsUI
+		SccProjectUniqueName3 = Installers\\GlobalParamsBA\\GlobalParamsBA.wixproj
+		SccProjectTopLevelParentUniqueName3 = GlobalParams.sln
+		SccProjectName3 = Installers/GlobalParamsBA
+		SccLocalPath3 = Installers\\GlobalParamsBA
+		SccProjectUniqueName4 = Installers\\GlobalParamsMSI\\GlobalParamsMSI.wixproj
+		SccProjectTopLevelParentUniqueName4 = GlobalParams.sln
+		SccProjectName4 = Installers/GlobalParamsMSI
+		SccLocalPath4 = Installers\\GlobalParamsMSI
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{B84E785C-9181-463D-B58F-DBB5DC1E26A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B84E785C-9181-463D-B58F-DBB5DC1E26A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B84E785C-9181-463D-B58F-DBB5DC1E26A7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B84E785C-9181-463D-B58F-DBB5DC1E26A7}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B84E785C-9181-463D-B58F-DBB5DC1E26A7}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{B84E785C-9181-463D-B58F-DBB5DC1E26A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B84E785C-9181-463D-B58F-DBB5DC1E26A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B84E785C-9181-463D-B58F-DBB5DC1E26A7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B84E785C-9181-463D-B58F-DBB5DC1E26A7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B84E785C-9181-463D-B58F-DBB5DC1E26A7}.Release|x86.ActiveCfg = Release|Any CPU
+		{A60DB4E7-9297-4453-A09A-1F1E8303375E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A60DB4E7-9297-4453-A09A-1F1E8303375E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A60DB4E7-9297-4453-A09A-1F1E8303375E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A60DB4E7-9297-4453-A09A-1F1E8303375E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A60DB4E7-9297-4453-A09A-1F1E8303375E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A60DB4E7-9297-4453-A09A-1F1E8303375E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A60DB4E7-9297-4453-A09A-1F1E8303375E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A60DB4E7-9297-4453-A09A-1F1E8303375E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A60DB4E7-9297-4453-A09A-1F1E8303375E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A60DB4E7-9297-4453-A09A-1F1E8303375E}.Release|x86.ActiveCfg = Release|Any CPU
+		{B92BC033-FFE5-4D1C-8F6D-2162957CA028}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{B92BC033-FFE5-4D1C-8F6D-2162957CA028}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{B92BC033-FFE5-4D1C-8F6D-2162957CA028}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{B92BC033-FFE5-4D1C-8F6D-2162957CA028}.Debug|x86.ActiveCfg = Debug|x86
+		{B92BC033-FFE5-4D1C-8F6D-2162957CA028}.Debug|x86.Build.0 = Debug|x86
+		{B92BC033-FFE5-4D1C-8F6D-2162957CA028}.Release|Any CPU.ActiveCfg = Release|x86
+		{B92BC033-FFE5-4D1C-8F6D-2162957CA028}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{B92BC033-FFE5-4D1C-8F6D-2162957CA028}.Release|Mixed Platforms.Build.0 = Release|x86
+		{B92BC033-FFE5-4D1C-8F6D-2162957CA028}.Release|x86.ActiveCfg = Release|x86
+		{B92BC033-FFE5-4D1C-8F6D-2162957CA028}.Release|x86.Build.0 = Release|x86
+		{98A5607E-B890-4B02-BF80-42535E4D7168}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{98A5607E-B890-4B02-BF80-42535E4D7168}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{98A5607E-B890-4B02-BF80-42535E4D7168}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{98A5607E-B890-4B02-BF80-42535E4D7168}.Debug|x86.ActiveCfg = Debug|x86
+		{98A5607E-B890-4B02-BF80-42535E4D7168}.Debug|x86.Build.0 = Debug|x86
+		{98A5607E-B890-4B02-BF80-42535E4D7168}.Release|Any CPU.ActiveCfg = Release|x86
+		{98A5607E-B890-4B02-BF80-42535E4D7168}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{98A5607E-B890-4B02-BF80-42535E4D7168}.Release|Mixed Platforms.Build.0 = Release|x86
+		{98A5607E-B890-4B02-BF80-42535E4D7168}.Release|x86.ActiveCfg = Release|x86
+		{98A5607E-B890-4B02-BF80-42535E4D7168}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A60DB4E7-9297-4453-A09A-1F1E8303375E} = {8BB8C89B-CF84-4E95-BF22-156936F4F229}
+		{B92BC033-FFE5-4D1C-8F6D-2162957CA028} = {8BB8C89B-CF84-4E95-BF22-156936F4F229}
+		{98A5607E-B890-4B02-BF80-42535E4D7168} = {8BB8C89B-CF84-4E95-BF22-156936F4F229}
+		{E5C3786F-1E51-4F10-BDCA-114FC10A4DC6} = {22299F88-51B1-4924-99C5-F2C8B25A7354}
+		{400DC138-9037-4FE0-AC79-D115E8AF8628} = {E5C3786F-1E51-4F10-BDCA-114FC10A4DC6}
 	EndGlobalSection
 EndGlobal
