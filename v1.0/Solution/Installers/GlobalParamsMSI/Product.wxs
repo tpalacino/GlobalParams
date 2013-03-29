@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"  xmlns:vs="http://schemas.microsoft.com/wix/VSExtension" >
+	<Product Id="*" Name="Global Params" Language="1033" Version="1.0.0.0" Manufacturer="Troy Palacino" UpgradeCode="5F368B59-ED37-4785-A517-8CC82340B427">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<Media Id="1" Cabinet="GlobalParamsMedia.cab" EmbedCab="yes" />
+		
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="Global Params" />
+			</Directory>
+		</Directory>
+
+		<Feature Id="ProductFeature" Title="Global Params" Level="1">
+			<ComponentGroupRef Id="GlobalParamsComponents" />
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<ComponentGroup Id="GlobalParamsComponents" Directory="INSTALLFOLDER">
+			<Component Id="GlobalParamsComponent" Guid="F6BF4C31-FF68-425D-A813-0D90BC4B6F0F">
+				<File Id="GlobalParams.dll" Source="$(var.GlobalParams.TargetDir)$(var.GlobalParams.TargetName).dll" />
+				<File Id="GlobalParams.pdb" Source="$(var.GlobalParams.TargetDir)$(var.GlobalParams.TargetName).pdb" />
+				<File Id="GlobalParams.xml" Source="$(var.GlobalParams.TargetDir)$(var.GlobalParams.TargetName).xml" />
+				<File Id="GlobalParams.vsix" Source="..\..\Templates\GlobalParams.vsix" Vital="yes" DiskId="1" >
+					<vs:VsixPackage PackageId="GlobalParams.D2527C02-7E63-4623-A226-6DACEECEE04F" />
+				</File>
+			</Component>
+			
+			<Component Id="GlobalParamsCacheComponent" Guid="47653EF4-9E1D-44B0-A21A-80B7AB7E3A38">
+				<File Id="GlobalParamsCache" KeyPath="yes" Source="$(var.GlobalParams.TargetPath)" Assembly=".net"/>
+			</Component>
+			
+			<Component Id="GlobalParamsRegistration" Guid="4AF554B9-C0AC-4C33-AD1A-789464CB7896" >
+				<RegistryValue Root="HKLM" Value="[INSTALLFOLDER]" Type="string"
+											 Key="SOFTWARE\Microsoft\.NETFramework\v3.5\AssemblyFoldersEx\GlobalParams v1.0" />
+				<RegistryValue Root="HKLM" Value="[INSTALLFOLDER]" Type="string"
+											 Key="SOFTWARE\Microsoft\.NETFramework\v4.0.30319\AssemblyFoldersEx\GlobalParams v1.0" />
+			</Component>
+			
+			<Component Id="GlobalParamsEnvVar" Guid="4E4C3138-A8D0-43F9-8885-E384E64DC2B9" >
+				<Environment Id="GlobalParams.EnvVar" Name="GlobalParams" Part="all" System="yes" Action="set" Value="[INSTALLFOLDER]" />
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+</Wix>

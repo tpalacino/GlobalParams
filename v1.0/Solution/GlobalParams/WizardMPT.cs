@@ -96,6 +96,9 @@ namespace GlobalParams
 				// Check if we are running as the parent template
 				if (IsMainTemplate(replacementsDictionary))
 				{
+					// Clear any leftover items from the static instance.
+					Parameters.Clear();
+
 					// We are running as the parent template so record the solution name and the replacements dictionary
 					foreach (string key in replacementsDictionary.Keys)
 					{
@@ -108,19 +111,17 @@ namespace GlobalParams
 						Parameters.Set(string.Format("guid{0}", i), Guid.NewGuid().ToString());
 					}
 				}
-				else
+
+				// Make sure each template that runs us has access to the global parameters
+				foreach (var parameter in Parameters.All)
 				{
-					// We are running as a child template so bring in the replacements dictionary entries from the parent
-					foreach (var parameter in Parameters.All)
+					if (replacementsDictionary.ContainsKey(parameter.Key))
 					{
-						if (replacementsDictionary.ContainsKey(parameter.Key))
-						{
-							replacementsDictionary[parameter.Key] = Parameters.Get(parameter.Key).ToString();
-						}
-						else
-						{
-							replacementsDictionary.Add(parameter.Key, parameter.Value.ToString());
-						}
+						replacementsDictionary[parameter.Key] = Parameters.Get(parameter.Key).ToString();
+					}
+					else
+					{
+						replacementsDictionary.Add(parameter.Key, parameter.Value.ToString());
 					}
 				}
 			}
