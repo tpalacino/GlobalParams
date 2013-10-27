@@ -17,29 +17,6 @@ namespace GlobalParams
         public void BeforeOpeningFile(ProjectItem projectItem) { OnBeforeOpeningFile(projectItem); }
         #endregion BeforeOpeningFile
 
-        #region IsTopLevel
-        /// <summary>Determines if the project being generated is the top level template.</summary>
-        /// <param name="parms">The replacements dictionary that may include wizard data that will indicate if it is the top level template.</param>
-        /// <returns>True if the replacements dictionary includes wizard data and the wizard data indicates that this is the top level template, otherwise false.</returns>
-        protected bool IsTopLevel(Dictionary<string, string> parms)
-        {
-            bool retVal = false;
-
-            if (parms != null && parms.ContainsKey(Constants.WIZARD_DATA_KEY) && !string.IsNullOrEmpty(parms[Constants.WIZARD_DATA_KEY]))
-            {
-                try
-                {
-                    XElement settings = XElement.Parse(parms[Constants.WIZARD_DATA_KEY]);
-                    retVal = (settings != null && settings.Name != null && Constants.XML_ELEM_SETTINGS.Equals(settings.Name.LocalName) &&
-                        settings.Attribute(Constants.XML_ATTR_IS_TOP_LEVEL) != null && bool.TryParse(settings.Attribute(Constants.XML_ATTR_IS_TOP_LEVEL).Value, out retVal));
-                }
-                catch { retVal = false; }
-            }
-
-            return retVal;
-        }
-        #endregion IsTopLevel
-
         #region OnBeforeOpeningFile
         /// <summary>This method is called before opening any item that has the OpenInEditor attribute.</summary>
         /// <param name="projectItem">The item to be opened.</param>
@@ -108,7 +85,7 @@ namespace GlobalParams
             if (OnBeforeRunStarted(automationObject, replacementsDictionary, runKind, customParams))
             {
                 // Check if we are running as the top level template
-                if (IsTopLevel(replacementsDictionary))
+                if (WizardRunKind.AsMultiProject.Equals(runKind))
                 {
                     // Clear any leftover items from the static instance.
                     Parameters.Clear();
