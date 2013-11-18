@@ -1,7 +1,11 @@
 ﻿using EnvDTE;
+using GlobalParams.Config;
+using GlobalParams.Objects;
 using Microsoft.VisualStudio.TemplateWizard;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Threading;
 using System.Xml.Linq;
 
 namespace GlobalParams
@@ -9,7 +13,36 @@ namespace GlobalParams
     /// <summary>The wizard used to expose replacement parameters across multiple projects.</summary>
     public class WizardMPT : IWizard
     {
+        #region Member Variables
+
+        /// <summary>The development environment.</summary>
+        private DTE _dte = null;
+
+        /// <summary>The destination directory for sub projects.</summary>
+        private string _destDir = string.Empty;
+
+        /// <summary>The root directory of template.</summary>
+        private string _templateDir = string.Empty;
+
+        /// <summary>The settings for the wizard.</summary>
+        private SettingsMPT _settings = null;
+
+        /// <summary>Indicates if the current wizard is the top level template.</summary>
+        private bool _isTopLevel = false;
+
+        #endregion Member Variables
+
         #region Methods
+
+        #region IsValid
+        /// <summary>Determines if the specified <paramref name="template"/> is valid.</summary>
+        /// <param name="template">The template to evaluate.</param>
+        /// <returns>True if the template is valid, otherwise false.</returns>
+        private bool IsValid(MappedTemplate template)
+        {
+            return template != null && !string.IsNullOrEmpty(template.Name) && template.Path != null && !string.IsNullOrEmpty(template.Template);
+        }
+        #endregion IsValid
 
         #region BeforeOpeningFile
         /// <summary>This method is called before opening any item that has the OpenInEditor attribute.</summary>
@@ -64,7 +97,28 @@ namespace GlobalParams
         #region ProjectFinishedGenerating
         /// <summary>Called after a project has finished generating.</summary>
         /// <param name="project">The project that was generated.</param>
-        public void ProjectFinishedGenerating(Project project) { OnProjectFinishedGenerating(project); }
+        public void ProjectFinishedGenerating(Project project)
+        {
+            if (_isTopLevel && _settings != null && _settings.ProjectMappings != null)
+            {
+                string templatePath = null, projectPath = null;
+                foreach (MappedTemplate template in _settings.ProjectMappings)
+                {
+                    if (IsValid(template))
+                    {
+                        try
+                        {
+                            templatePath = Path.Combine(_templateDir, template.Template);
+                            projectPath = Path.Combine(Path.GetDirectoryName(_destDir), template.Path);
+                            _dte.Solution.AddFromTemplate(templatePath, projectPath, template.Name);
+                        }
+                        catch { /* GULP */ }
+                    }
+                }
+            }
+
+            OnProjectFinishedGenerating(project);
+        }
         #endregion ProjectFinishedGenerating
 
         #region ProjectItemFinishedGenerating
@@ -75,17 +129,32 @@ namespace GlobalParams
 
         #region RunFinished
         /// <summary>This method is called when the wizard is complete.</summary>
-        public void RunFinished() { OnRunFinished(); }
+        public void RunFinished()
+        {
+            if (_isTopLevel)
+            {
+                System.Threading.Thread t = new System.Threading.Thread(() =>
+                {
+                    try { Directory.Delete(_destDir); }
+                    catch { /* GULP */ }
+                });
+                t.Start();
+            }
+
+            OnRunFinished();
+        }
         #endregion RunFinished
 
         #region RunStarted
         /// <summary>This method is called when the wizard first begins.</summary>
         public void RunStarted(object automationObject, Dictionary<string, string> replacementsDictionary, WizardRunKind runKind, object[] customParams)
         {
+            _isTopLevel = WizardRunKind.AsMultiProject.Equals(runKind);
+
             if (OnBeforeRunStarted(automationObject, replacementsDictionary, runKind, customParams))
             {
                 // Check if we are running as the top level template
-                if (WizardRunKind.AsMultiProject.Equals(runKind))
+                if (_isTopLevel)
                 {
                     // Clear any leftover items from the static instance.
                     Parameters.Clear();
@@ -117,6 +186,21 @@ namespace GlobalParams
                 }
             }
             OnAfterRunStarted(automationObject, replacementsDictionary, runKind, customParams);
+
+            if (_isTopLevel && replacementsDictionary != null)
+            {
+                try { _dte = (DTE)automationObject; }
+                catch { /* GULP */ }
+
+                try { _settings = new SettingsMPT(XElement.Parse(replacementsDictionary[Constants.WIZARD_DATA_KEY])); }
+                catch { /* GULP */ }
+
+                try { _destDir = replacementsDictionary[Constants.DEST_DIR_KEY]; }
+                catch { /* GULP */ }
+
+                try { _templateDir = Path.GetDirectoryName(customParams[0] as string); }
+                catch { /* GULP */ }
+            }
         }
         #endregion RunStarted
 

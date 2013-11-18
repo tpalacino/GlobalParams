@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" >
-	<Bundle Name="Global Params" Version="1.0.0.0" Manufacturer="Troy Palacino" UpgradeCode="B3CF1E79-B607-421C-862F-C40A7FCA809C"
+	<Bundle Name="Global Params" Version="1.1.0.0" Manufacturer="Troy Palacino" UpgradeCode="B3CF1E79-B607-421C-862F-C40A7FCA809C"
 					HelpUrl="http://globalparams.codeplex.com">
 
 		<BootstrapperApplicationRef Id="ManagedBootstrapperApplicationHost" >
 			<Payload SourceFile="BootstrapperCore.config" />
-			<Payload SourceFile="$(env.WixWPF)WixWPF.dll" />
-			<Payload SourceFile="$(env.WixWPF)WixWPF.pdb" />
+			<Payload SourceFile="$(env.WixWPF)v3.8\WixWPF.dll" />
+			<Payload SourceFile="$(env.WixWPF)v3.8\WixWPF.pdb" />
 			<Payload SourceFile="$(var.GlobalParamsUI.TargetPath)" /> 
 		</BootstrapperApplicationRef>
 

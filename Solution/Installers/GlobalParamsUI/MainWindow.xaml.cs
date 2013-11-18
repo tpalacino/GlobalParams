@@ -60,11 +60,18 @@ namespace GlobalParamsUI
 		/// <param name="args">The arguments of the event.</param>
 		public override void OnApplyComplete(WPFBootstrapperEventArgs<Wix.ApplyCompleteEventArgs> args)
 		{
-			if (IsValid(args) && Wix.Result.None.Equals(args.Arguments.Result))
-			{
-				args.Cancel = true;
-				Bootstrapper.Engine.Detect();
-			}
+      if (IsValid(args) && Wix.Result.None.Equals(args.Arguments.Result))
+      {
+        if (Wix.RelationType.Upgrade.Equals(Bootstrapper.Command.Relation) && !InstallData.IsInstalled)
+        {
+          Close();
+        }
+        else
+        {
+          args.Cancel = true;
+          Bootstrapper.Engine.Detect();
+        }
+      }
 		}
 		#endregion OnApplyComplete
 
@@ -74,6 +81,11 @@ namespace GlobalParamsUI
 		public override void OnDetectComplete(WPFBootstrapperEventArgs<Wix.DetectCompleteEventArgs> args)
 		{
 			InstallData.IsBusy = false;
+      
+      if (Wix.RelationType.Upgrade.Equals(Bootstrapper.Command.Relation) && !InstallData.IsInstalled)
+      {
+        Bootstrapper.Engine.Plan(Wix.LaunchAction.Uninstall);
+      }
 		}
 		#endregion OnDetectComplete
 
