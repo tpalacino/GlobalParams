@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Vsix xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0.0" >
+  <Identifier Id="GlobalParams.D2527C02-7E63-4623-A226-6DACEECEE04F">
+    <Name>Global Params</Name>
+    <Author>Troy Palacino</Author>
+    <Version>1.0</Version>
+    <Description></Description>
+    <Locale>1033</Locale>
+    <Icon>Logo.png</Icon>
+	<AllUsers>true</AllUsers>
+	<License>License.rtf</License>
+    <InstalledByMsi>false</InstalledByMsi>
+	<MoreInfoUrl>http://globalparams.codeplex.com</MoreInfoUrl>
+    <SupportedProducts>
+      <VisualStudio Version="10.0">
+        <Edition>Ultimate</Edition>
+        <Edition>Premium</Edition>
+        <Edition>Pro</Edition>
+		<Edition>Express_All</Edition>
+      </VisualStudio>
+      <VisualStudio Version="11.0">
+        <Edition>Ultimate</Edition>
+        <Edition>Premium</Edition>
+        <Edition>Pro</Edition>
+		<Edition>Express_All</Edition>
+      </VisualStudio>
+    </SupportedProducts>
+    <SupportedFrameworkRuntimeEdition MinVersion="4.0" />
+  </Identifier>
+  <Content>
+    <ProjectTemplate>GlobalParams</ProjectTemplate>
+  </Content>
+</Vsix>

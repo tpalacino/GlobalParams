@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GlobalParams</name>
+    </assembly>
+    <members>
+        <member name="T:GlobalParams.Parameters">
+            <summary>Storage for global parameters.</summary>
+        </member>
+        <member name="F:GlobalParams.Parameters._parameters">
+            <summary>Private storage for the global parameters.</summary>
+        </member>
+        <member name="M:GlobalParams.Parameters.Get(System.String)">
+            <summary>Gets the parameter by the specified <paramref name="key"/>.</summary>
+            <param name="key">The key.</param>
+            <returns>The parameter value or an empty string.</returns>
+        </member>
+        <member name="M:GlobalParams.Parameters.Set(System.String,System.Object)">
+            <summary>Sets the parameter with the specified <paramref name="key"/> to the specified <paramref name="value"/>. See remarks for more info.</summary>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+            <remarks>If a parameter with the specified <paramref name="key"/> doesn not exist it will be created.</remarks>
+        </member>
+        <member name="M:GlobalParams.Parameters.Has(System.String)">
+            <summary>Determines if a parameter is defined with the specified <paramref name="key"/> converted to a global parameter name.</summary>
+            <param name="key">The key.</param>
+            <returns>True if the an entry was found, otherwise false.</returns>
+        </member>
+        <member name="M:GlobalParams.Parameters.HasPrivate(System.String)">
+            <summary>Determines if there is an entry with the specified <paramref name="key"/> in the parameter collection.</summary>
+            <param name="key">The key.</param>
+            <returns>True if the an entry was found, otherwise false.</returns>
+        </member>
+        <member name="M:GlobalParams.Parameters.Globalize(System.String)">
+            <summary>Creates a global parameter key from the specified <paramref name="key"/>.</summary>
+            <param name="key">The key to globalize.</param>
+            <returns>The parameter key converted to a global parameter key, or the original value.</returns>
+        </member>
+        <member name="M:GlobalParams.Parameters.Clear">
+            <summary>Clears the underlying parameter collection.</summary>
+        </member>
+        <member name="P:GlobalParams.Parameters.All">
+            <summary>Return the underlying parameter collection.</summary>
+        </member>
+        <member name="T:GlobalParams.WizardMPT">
+            <summary>The wizard used to expose replacement parameters across multiple projects.</summary>
+        </member>
+        <member name="M:GlobalParams.WizardMPT.BeforeOpeningFile(EnvDTE.ProjectItem)">
+            <summary>This method is called before opening any item that has the OpenInEditor attribute.</summary>
+            <param name="projectItem">The item to be opened.</param>
+        </member>
+        <member name="M:GlobalParams.WizardMPT.OnBeforeOpeningFile(EnvDTE.ProjectItem)">
+            <summary>This method is called before opening any item that has the OpenInEditor attribute.</summary>
+            <param name="projectItem">The item to be opened.</param>
+        </member>
+        <member name="M:GlobalParams.WizardMPT.OnProjectFinishedGenerating(EnvDTE.Project)">
+            <summary>Called after a project has finished generating.</summary>
+            <param name="project">The project that was generated.</param>
+        </member>
+        <member name="M:GlobalParams.WizardMPT.OnProjectItemFinishedGenerating(EnvDTE.ProjectItem)">
+            <summary>This method is only called for item templates, not for project templates.</summary>
+            <param name="projectItem">The item that was generated.</param>
+        </member>
+        <member name="M:GlobalParams.WizardMPT.OnRunFinished">
+            <summary>This method is called when the wizard is complete.</summary>
+        </member>
+        <member name="M:GlobalParams.WizardMPT.OnBeforeRunStarted(System.Object,System.Collections.Generic.Dictionary{System.String,System.String},Microsoft.VisualStudio.TemplateWizard.WizardRunKind,System.Object[])">
+            <summary>Called when the wizard first begins and before the global parameters are create.</summary>
+            <remarks>Override and return false to stop default global parameters.</remarks>
+        </member>
+        <member name="M:GlobalParams.WizardMPT.OnAfterRunStarted(System.Object,System.Collections.Generic.Dictionary{System.String,System.String},Microsoft.VisualStudio.TemplateWizard.WizardRunKind,System.Object[])">
+            <summary>Called when the wizard first begins and before the global parameters are create.</summary>
+        </member>
+        <member name="M:GlobalParams.WizardMPT.OnShouldAddProjectItem(System.String)">
+            <summary>This method is only called for item templates, not for project templates.</summary>
+            <param name="filePath">The full path to the item.</param>
+            <returns>True if the item should be added, otherwise false.</returns>
+        </member>
+        <member name="M:GlobalParams.WizardMPT.ProjectFinishedGenerating(EnvDTE.Project)">
+            <summary>Called after a project has finished generating.</summary>
+            <param name="project">The project that was generated.</param>
+        </member>
+        <member name="M:GlobalParams.WizardMPT.ProjectItemFinishedGenerating(EnvDTE.ProjectItem)">
+            <summary>This method is only called for item templates, not for project templates.</summary>
+            <param name="projectItem">The item that was generated.</param>
+        </member>
+        <member name="M:GlobalParams.WizardMPT.RunFinished">
+            <summary>This method is called when the wizard is complete.</summary>
+        </member>
+        <member name="M:GlobalParams.WizardMPT.RunStarted(System.Object,System.Collections.Generic.Dictionary{System.String,System.String},Microsoft.VisualStudio.TemplateWizard.WizardRunKind,System.Object[])">
+            <summary>This method is called when the wizard first begins.</summary>
+        </member>
+        <member name="M:GlobalParams.WizardMPT.ShouldAddProjectItem(System.String)">
+            <summary>This method is only called for item templates, not for project templates.</summary>
+            <param name="filePath">The full path to the item.</param>
+            <returns>True if the item should be added, otherwise false.</returns>
+        </member>
+        <member name="T:GlobalParams.Constants">
+            <summary>Defines constant values used by the Multi-Project Template Wizard.</summary>
+        </member>
+        <member name="F:GlobalParams.Constants.SAFE_PROJECT_KEY">
+            <summary>The literal value "$safeprojectname$".</summary>
+        </member>
+        <member name="F:GlobalParams.Constants.FORMAT_GLOBAL_KEY">
+            <summary>The literal value "$global{0}$".</summary>
+        </member>
+    </members>
+</doc>
