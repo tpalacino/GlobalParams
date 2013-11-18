@@ -53,6 +53,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\SettingsMPT.cs" />
+    <Compile Include="Objects\MappedTemplate.cs" />
     <Compile Include="WizardMPT.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Parameters.cs" />

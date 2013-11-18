@@ -4,46 +4,53 @@
         <name>GlobalParams</name>
     </assembly>
     <members>
-        <member name="T:GlobalParams.Parameters">
-            <summary>Storage for global parameters.</summary>
+        <member name="T:GlobalParams.Config.SettingsMPT">
+            <summary>Represents settings for the multi-project template wizard.</summary>
         </member>
-        <member name="F:GlobalParams.Parameters._parameters">
-            <summary>Private storage for the global parameters.</summary>
+        <member name="F:GlobalParams.Config.SettingsMPT.m_ProjectMappings">
+            <summary>The list of project mappings.</summary>
         </member>
-        <member name="M:GlobalParams.Parameters.Get(System.String)">
-            <summary>Gets the parameter by the specified <paramref name="key"/>.</summary>
-            <param name="key">The key.</param>
-            <returns>The parameter value or an empty string.</returns>
+        <member name="M:GlobalParams.Config.SettingsMPT.#ctor(System.Xml.Linq.XElement)">
+            <summary>Creates a new instance of <see cref="T:GlobalParams.Config.SettingsMPT"/> from the specified <paramref name="xml"/>.</summary>
+            <param name="xml">The xml representation of the settings.</param>
         </member>
-        <member name="M:GlobalParams.Parameters.Set(System.String,System.Object)">
-            <summary>Sets the parameter with the specified <paramref name="key"/> to the specified <paramref name="value"/>. See remarks for more info.</summary>
-            <param name="key">The key.</param>
-            <param name="value">The value.</param>
-            <remarks>If a parameter with the specified <paramref name="key"/> doesn not exist it will be created.</remarks>
+        <member name="P:GlobalParams.Config.SettingsMPT.ProjectMappings">
+            <summary>The list of project mappings.</summary>
         </member>
-        <member name="M:GlobalParams.Parameters.Has(System.String)">
-            <summary>Determines if a parameter is defined with the specified <paramref name="key"/> converted to a global parameter name.</summary>
-            <param name="key">The key.</param>
-            <returns>True if the an entry was found, otherwise false.</returns>
+        <member name="T:GlobalParams.Objects.MappedTemplate">
+            <summary>Represents a mapped template.</summary>
         </member>
-        <member name="M:GlobalParams.Parameters.HasPrivate(System.String)">
-            <summary>Determines if there is an entry with the specified <paramref name="key"/> in the parameter collection.</summary>
-            <param name="key">The key.</param>
-            <returns>True if the an entry was found, otherwise false.</returns>
+        <member name="P:GlobalParams.Objects.MappedTemplate.Name">
+            <summary>The name of the project.</summary>
         </member>
-        <member name="M:GlobalParams.Parameters.Globalize(System.String)">
-            <summary>Creates a global parameter key from the specified <paramref name="key"/>.</summary>
-            <param name="key">The key to globalize.</param>
-            <returns>The parameter key converted to a global parameter key, or the original value.</returns>
+        <member name="P:GlobalParams.Objects.MappedTemplate.Path">
+            <summary>The path to the project.</summary>
         </member>
-        <member name="M:GlobalParams.Parameters.Clear">
-            <summary>Clears the underlying parameter collection.</summary>
-        </member>
-        <member name="P:GlobalParams.Parameters.All">
-            <summary>Return the underlying parameter collection.</summary>
+        <member name="P:GlobalParams.Objects.MappedTemplate.Template">
+            <summary>The path to the template.</summary>
         </member>
         <member name="T:GlobalParams.WizardMPT">
             <summary>The wizard used to expose replacement parameters across multiple projects.</summary>
+        </member>
+        <member name="F:GlobalParams.WizardMPT._dte">
+            <summary>The development environment.</summary>
+        </member>
+        <member name="F:GlobalParams.WizardMPT._destDir">
+            <summary>The destination directory for sub projects.</summary>
+        </member>
+        <member name="F:GlobalParams.WizardMPT._templateDir">
+            <summary>The root directory of template.</summary>
+        </member>
+        <member name="F:GlobalParams.WizardMPT._settings">
+            <summary>The settings for the wizard.</summary>
+        </member>
+        <member name="F:GlobalParams.WizardMPT._isTopLevel">
+            <summary>Indicates if the current wizard is the top level template.</summary>
+        </member>
+        <member name="M:GlobalParams.WizardMPT.IsValid(GlobalParams.Objects.MappedTemplate)">
+            <summary>Determines if the specified <paramref name="template"/> is valid.</summary>
+            <param name="template">The template to evaluate.</param>
+            <returns>True if the template is valid, otherwise false.</returns>
         </member>
         <member name="M:GlobalParams.WizardMPT.BeforeOpeningFile(EnvDTE.ProjectItem)">
             <summary>This method is called before opening any item that has the OpenInEditor attribute.</summary>
@@ -98,11 +105,92 @@
         <member name="T:GlobalParams.Constants">
             <summary>Defines constant values used by the Multi-Project Template Wizard.</summary>
         </member>
+        <member name="F:GlobalParams.Constants.VALID_SAFE_PROJECT_SPACE">
+            <summary>The literal value '_'.</summary>
+        </member>
+        <member name="F:GlobalParams.Constants.INVALID_SAFE_PROJECT_SPACE">
+            <summary>The literal value ' '.</summary>
+        </member>
+        <member name="F:GlobalParams.Constants.INDICATOR_PARAM">
+            <summary>The literal value '$'.</summary>
+        </member>
         <member name="F:GlobalParams.Constants.SAFE_PROJECT_KEY">
             <summary>The literal value "$safeprojectname$".</summary>
         </member>
+        <member name="F:GlobalParams.Constants.DEST_DIR_KEY">
+            <summary>The literal value "$destinationdirectory$".</summary>
+        </member>
+        <member name="F:GlobalParams.Constants.WIZARD_DATA_KEY">
+            <summary>The literal value "$wizarddata$".</summary>
+        </member>
         <member name="F:GlobalParams.Constants.FORMAT_GLOBAL_KEY">
             <summary>The literal value "$global{0}$".</summary>
+        </member>
+        <member name="F:GlobalParams.Constants.PATTERN_RESOLVE">
+            <summary>The literal value "(\$.*?\$)".</summary>
+        </member>
+        <member name="F:GlobalParams.Constants.PATTERN_GLOBALIZED">
+            <summary>The literal value "^\$global.*\$$".</summary>
+        </member>
+        <member name="F:GlobalParams.Constants.XML_ELEM_SETTINGS">
+            <summary>The literal value "Settings".</summary>
+        </member>
+        <member name="F:GlobalParams.Constants.XML_ELEM_MAPPED_PROJECT_TEMPLATE">
+            <summary>The literal value "MappedProjectTemplate".</summary>
+        </member>
+        <member name="F:GlobalParams.Constants.XML_ATTR_NAME">
+            <summary>The literal value "name".</summary>
+        </member>
+        <member name="F:GlobalParams.Constants.XML_ATTR_PATH">
+            <summary>The literal value "path".</summary>
+        </member>
+        <member name="F:GlobalParams.Constants.XML_ATTR_TEMPLATE">
+            <summary>The literal value "template".</summary>
+        </member>
+        <member name="F:GlobalParams.Constants.XML_ATTR_NAMESPACE">
+            <summary>The literal value "namespace".</summary>
+        </member>
+        <member name="T:GlobalParams.Parameters">
+            <summary>Storage for global parameters.</summary>
+        </member>
+        <member name="F:GlobalParams.Parameters._parameters">
+            <summary>Private storage for the global parameters.</summary>
+        </member>
+        <member name="M:GlobalParams.Parameters.Get(System.String)">
+            <summary>Gets the parameter by the specified <paramref name="key"/>.</summary>
+            <param name="key">The key.</param>
+            <returns>The parameter value or an empty string.</returns>
+        </member>
+        <member name="M:GlobalParams.Parameters.Set(System.String,System.Object)">
+            <summary>Sets the parameter with the specified <paramref name="key"/> to the specified <paramref name="value"/>. See remarks for more info.</summary>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+            <remarks>If a parameter with the specified <paramref name="key"/> doesn not exist it will be created.</remarks>
+        </member>
+        <member name="M:GlobalParams.Parameters.Has(System.String)">
+            <summary>Determines if a parameter is defined with the specified <paramref name="key"/> converted to a global parameter name.</summary>
+            <param name="key">The key.</param>
+            <returns>True if the an entry was found, otherwise false.</returns>
+        </member>
+        <member name="M:GlobalParams.Parameters.HasPrivate(System.String)">
+            <summary>Determines if there is an entry with the specified <paramref name="key"/> in the parameter collection.</summary>
+            <param name="key">The key.</param>
+            <returns>True if the an entry was found, otherwise false.</returns>
+        </member>
+        <member name="M:GlobalParams.Parameters.Globalize(System.String)">
+            <summary>Creates a global parameter key from the specified <paramref name="key"/>.</summary>
+            <param name="key">The key to globalize.</param>
+            <returns>The parameter key converted to a global parameter key, or the original value.</returns>
+        </member>
+        <member name="M:GlobalParams.Parameters.Clear">
+            <summary>Clears the underlying parameter collection.</summary>
+        </member>
+        <member name="M:GlobalParams.Parameters.Resolve(System.String)">
+            <summary>Replaces all occurrences of parameters names found in the specified <paramref name="value"/> with the parameter value.</summary>
+            <param name="value">The value to resolves tokens in.</param>
+        </member>
+        <member name="P:GlobalParams.Parameters.All">
+            <summary>Return the underlying parameter collection.</summary>
         </member>
     </members>
 </doc>
