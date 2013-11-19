@@ -7,12 +7,18 @@
         <member name="T:GlobalParams.Config.SettingsMPT">
             <summary>Represents settings for the multi-project template wizard.</summary>
         </member>
-        <member name="F:GlobalParams.Config.SettingsMPT.m_ProjectMappings">
+        <member name="F:GlobalParams.Config.SettingsMPT._projectMappings">
             <summary>The list of project mappings.</summary>
+        </member>
+        <member name="F:GlobalParams.Config.SettingsMPT._deleteDefaultDirectory">
+            <summary>Indicates if the default directory should be deleted.</summary>
         </member>
         <member name="M:GlobalParams.Config.SettingsMPT.#ctor(System.Xml.Linq.XElement)">
             <summary>Creates a new instance of <see cref="T:GlobalParams.Config.SettingsMPT"/> from the specified <paramref name="xml"/>.</summary>
             <param name="xml">The xml representation of the settings.</param>
+        </member>
+        <member name="P:GlobalParams.Config.SettingsMPT.DeleteDefaultDirectory">
+            <summary>Indicates if the default directory should be deleted.</summary>
         </member>
         <member name="P:GlobalParams.Config.SettingsMPT.ProjectMappings">
             <summary>The list of project mappings.</summary>
@@ -146,6 +152,9 @@
         </member>
         <member name="F:GlobalParams.Constants.XML_ATTR_TEMPLATE">
             <summary>The literal value "template".</summary>
+        </member>
+        <member name="F:GlobalParams.Constants.XML_ATTR_DELETE_DEFAULT_DIR">
+            <summary>The literal value "deleteDefaultDirectory".</summary>
         </member>
         <member name="F:GlobalParams.Constants.XML_ATTR_NAMESPACE">
             <summary>The literal value "namespace".</summary>
