@@ -29,9 +29,10 @@ namespace GlobalParams.Config
       if (xml != null && xml.Name != null && xml.Name.LocalName.Equals(Constants.XML_ELEM_SETTINGS))
       {
         XAttribute attrib = xml.Attribute(Constants.XML_ATTR_DELETE_DEFAULT_DIR);
-        if (attrib != null)
+        bool delDefaultDir = _deleteDefaultDirectory;
+        if (attrib != null && bool.TryParse(attrib.Value, out delDefaultDir))
         {
-          bool.TryParse(attrib.Value, out _deleteDefaultDirectory);
+          _deleteDefaultDirectory = delDefaultDir;
         }
 
         string name = string.Empty, path = string.Empty, template = string.Empty;
