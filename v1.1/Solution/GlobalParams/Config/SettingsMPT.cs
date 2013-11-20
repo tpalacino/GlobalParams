@@ -52,8 +52,10 @@ namespace GlobalParams.Config
             attrib = mapElem.Attribute(Constants.XML_ATTR_TEMPLATE);
             if (attrib != null) { template = Parameters.Resolve(attrib.Value); }
 
-            if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(template) && path != null)
+            if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(template))
             {
+              if (string.IsNullOrEmpty(path)) { path = name; }
+
               _projectMappings.Add(new MappedTemplate() { Name = name, Path = path, Template = template, });
             }
           }
