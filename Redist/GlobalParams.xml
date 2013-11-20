@@ -132,6 +132,12 @@
         <member name="F:GlobalParams.Constants.FORMAT_GLOBAL_KEY">
             <summary>The literal value "$global{0}$".</summary>
         </member>
+        <member name="F:GlobalParams.Constants.FORMAT_GUID_KEY">
+            <summary>The literal value "guid{0}".</summary>
+        </member>
+        <member name="F:GlobalParams.Constants.GUID_FORMATTER">
+            <summary>The literal value "D".</summary>
+        </member>
         <member name="F:GlobalParams.Constants.PATTERN_RESOLVE">
             <summary>The literal value "(\$.*?\$)".</summary>
         </member>

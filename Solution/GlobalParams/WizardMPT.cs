@@ -99,21 +99,41 @@ namespace GlobalParams
     /// <param name="project">The project that was generated.</param>
     public void ProjectFinishedGenerating(Project project)
     {
-      if (_isTopLevel && _settings != null && _settings.ProjectMappings != null)
+      if (_isTopLevel && _settings != null)
       {
-        string templatePath = null, projectPath = null;
-        foreach (MappedTemplate template in _settings.ProjectMappings)
+        if (_settings.ProjectMappings != null)
         {
-          if (IsValid(template))
+          string templatePath = null, projectPath = null, solutionDir = Path.GetDirectoryName(_destDir);
+          foreach (MappedTemplate template in _settings.ProjectMappings)
+          {
+            if (IsValid(template))
+            {
+              try
+              {
+                templatePath = Path.Combine(_templateDir, template.Template);
+                projectPath = Path.Combine(solutionDir, template.Path);
+                _dte.Solution.AddFromTemplate(templatePath, projectPath, template.Name);
+              }
+              catch { /* GULP */ }
+            }
+          }
+        }
+
+        if (_settings.DeleteDefaultDirectory && !string.IsNullOrEmpty(_destDir))
+        {
+          System.Threading.Thread t = new System.Threading.Thread(() =>
           {
             try
             {
-              templatePath = Path.Combine(_templateDir, template.Template);
-              projectPath = Path.Combine(Path.GetDirectoryName(_destDir), template.Path);
-              _dte.Solution.AddFromTemplate(templatePath, projectPath, template.Name);
+              System.Threading.Thread.Sleep(1000);
+              if (Directory.Exists(_destDir) && Directory.GetFileSystemEntries(_destDir).Length == 0)
+              {
+                Directory.Delete(_destDir);
+              }
             }
             catch { /* GULP */ }
-          }
+          });
+          t.Start();
         }
       }
 
@@ -129,26 +149,7 @@ namespace GlobalParams
 
     #region RunFinished
     /// <summary>This method is called when the wizard is complete.</summary>
-    public void RunFinished()
-    {
-      if (_isTopLevel && _settings != null && _settings.DeleteDefaultDirectory && !string.IsNullOrEmpty(_destDir))
-      {
-        System.Threading.Thread t = new System.Threading.Thread(() =>
-        {
-          try
-          {
-            if (Directory.Exists(_destDir) && Directory.GetFileSystemEntries(_destDir).Length == 0)
-            {
-              Directory.Delete(_destDir);
-            }
-          }
-          catch { /* GULP */ }
-        });
-        t.Start();
-      }
-
-      OnRunFinished();
-    }
+    public void RunFinished() { OnRunFinished(); }
     #endregion RunFinished
 
     #region RunStarted
@@ -174,7 +175,7 @@ namespace GlobalParams
           // Extend the number of guids from 10 to 100
           for (int i = 1; i <= 100; i++)
           {
-            Parameters.Set(string.Format("guid{0}", i), Guid.NewGuid().ToString("D"));
+            Parameters.Set(string.Format(Constants.FORMAT_GUID_KEY, i), Guid.NewGuid().ToString(Constants.GUID_FORMATTER));
           }
         }
 

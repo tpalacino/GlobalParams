@@ -27,6 +27,12 @@ namespace GlobalParams
     /// <summary>The literal value "$global{0}$".</summary>
     internal const string FORMAT_GLOBAL_KEY = "$global{0}$";
 
+    /// <summary>The literal value "guid{0}".</summary>
+    internal const string FORMAT_GUID_KEY = "guid{0}";
+
+    /// <summary>The literal value "D".</summary>
+    internal const string GUID_FORMATTER = "D";
+
     /// <summary>The literal value "(\$.*?\$)".</summary>
     internal const string PATTERN_RESOLVE = @"(\$.*?\$)";
 
