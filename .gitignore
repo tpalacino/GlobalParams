@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Solution/GlobalParams/obj
+/Solution/Installers/GlobalParamsUI/obj
+/.vs
+/Solution/.vs/GlobalParams/v15
+/Solution/GlobalParams/bin/Debug
+/Solution/packages

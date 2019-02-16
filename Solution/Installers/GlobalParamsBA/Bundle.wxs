@@ -5,8 +5,8 @@
 
 		<BootstrapperApplicationRef Id="ManagedBootstrapperApplicationHost" >
 			<Payload SourceFile="BootstrapperCore.config" />
-			<Payload SourceFile="$(env.WixWPF)v3.8\WixWPF.dll" />
-			<Payload SourceFile="$(env.WixWPF)v3.8\WixWPF.pdb" />
+			<Payload SourceFile="$(env.WixWPF)v3.11\WixWPF.dll" />
+			<Payload SourceFile="$(env.WixWPF)v3.11\WixWPF.pdb" />
 			<Payload SourceFile="$(var.GlobalParamsUI.TargetPath)" /> 
 		</BootstrapperApplicationRef>
 
