@@ -171,6 +171,9 @@
         <member name="F:GlobalParams.Parameters._parameters">
             <summary>Private storage for the global parameters.</summary>
         </member>
+        <member name="P:GlobalParams.Parameters.All">
+            <summary>Return the underlying parameter collection.</summary>
+        </member>
         <member name="M:GlobalParams.Parameters.Get(System.String)">
             <summary>Gets the parameter by the specified <paramref name="key"/>.</summary>
             <param name="key">The key.</param>
@@ -203,9 +206,6 @@
         <member name="M:GlobalParams.Parameters.Resolve(System.String)">
             <summary>Replaces all occurrences of parameters names found in the specified <paramref name="value"/> with the parameter value.</summary>
             <param name="value">The value to resolves tokens in.</param>
-        </member>
-        <member name="P:GlobalParams.Parameters.All">
-            <summary>Return the underlying parameter collection.</summary>
         </member>
     </members>
 </doc>
