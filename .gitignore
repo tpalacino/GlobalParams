@@ -9,3 +9,8 @@
 /Solution/GlobalParams/bin/Debug
 /Solution/packages
 /Solution/GlobalParams/bin/Release
+/Solution/Installers/GlobalParamsBA/bin/Release
+/Solution/Installers/GlobalParamsBA/obj/Release
+/Solution/Installers/GlobalParamsUI/bin/Release
+/Solution/Installers/GlobalParamsMSI/obj/Release
+/Solution/Installers/GlobalParamsMSI/bin/Release

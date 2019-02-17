@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlobalParams", "GlobalParams\GlobalParams.csproj", "{B84E785C-9181-463D-B58F-DBB5DC1E26A7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlobalParamsUI", "Installers\GlobalParamsUI\GlobalParamsUI.csproj", "{A60DB4E7-9297-4453-A09A-1F1E8303375E}"
@@ -35,27 +37,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Properties", "Properties", 
 	EndProjectSection
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 5
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs10
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = GlobalParams\\GlobalParams.csproj
-		SccProjectName1 = GlobalParams
-		SccLocalPath1 = GlobalParams
-		SccProjectUniqueName2 = Installers\\GlobalParamsUI\\GlobalParamsUI.csproj
-		SccProjectTopLevelParentUniqueName2 = GlobalParams.sln
-		SccProjectName2 = Installers/GlobalParamsUI
-		SccLocalPath2 = Installers\\GlobalParamsUI
-		SccProjectUniqueName3 = Installers\\GlobalParamsBA\\GlobalParamsBA.wixproj
-		SccProjectTopLevelParentUniqueName3 = GlobalParams.sln
-		SccProjectName3 = Installers/GlobalParamsBA
-		SccLocalPath3 = Installers\\GlobalParamsBA
-		SccProjectUniqueName4 = Installers\\GlobalParamsMSI\\GlobalParamsMSI.wixproj
-		SccProjectTopLevelParentUniqueName4 = GlobalParams.sln
-		SccProjectName4 = Installers/GlobalParamsMSI
-		SccLocalPath4 = Installers\\GlobalParamsMSI
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -109,5 +90,8 @@ Global
 		{98A5607E-B890-4B02-BF80-42535E4D7168} = {8BB8C89B-CF84-4E95-BF22-156936F4F229}
 		{E5C3786F-1E51-4F10-BDCA-114FC10A4DC6} = {22299F88-51B1-4924-99C5-F2C8B25A7354}
 		{400DC138-9037-4FE0-AC79-D115E8AF8628} = {E5C3786F-1E51-4F10-BDCA-114FC10A4DC6}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7E874A9A-61F5-4734-BFD1-A02BC210A003}
 	EndGlobalSection
 EndGlobal
