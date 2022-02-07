@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.329
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32106.194
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlobalParams", "GlobalParams\GlobalParams.csproj", "{B84E785C-9181-463D-B58F-DBB5DC1E26A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GlobalParams", "GlobalParams\GlobalParams.csproj", "{B84E785C-9181-463D-B58F-DBB5DC1E26A7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlobalParamsUI", "Installers\GlobalParamsUI\GlobalParamsUI.csproj", "{A60DB4E7-9297-4453-A09A-1F1E8303375E}"
 EndProject
