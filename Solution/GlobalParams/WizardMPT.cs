@@ -1,4 +1,5 @@
 ﻿using EnvDTE;
+using EnvDTE80;
 using GlobalParams.Config;
 using GlobalParams.Objects;
 using Microsoft.VisualStudio.TemplateWizard;
@@ -16,7 +17,7 @@ namespace GlobalParams
     #region Member Variables
 
     /// <summary>The development environment.</summary>
-    private DTE _dte = null;
+    private DTE2 _dte = null;
 
     /// <summary>The destination directory for sub projects.</summary>
     private string _destDir = string.Empty;
@@ -196,7 +197,7 @@ namespace GlobalParams
 
       if (_isTopLevel && replacementsDictionary != null)
       {
-        try { _dte = (DTE)automationObject; }
+        try { _dte = (DTE2)automationObject; }
         catch { /* GULP */ }
 
         try { _settings = new SettingsMPT(XElement.Parse(replacementsDictionary[Constants.WIZARD_DATA_KEY])); }
