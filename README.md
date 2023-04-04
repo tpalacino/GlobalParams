@@ -10,7 +10,6 @@ An assembly that defines an implementation of the [IWizard](http://msdn.microsof
 
 * To see some existing implementations you can take a look at the source for these projects.
    * [WixWPF](https://github.com/tpalacino/WixWPF)
-   * [WixBUI](https://github.com/tpalacino/WixBUI)
    * [IsWiX](https://github.com/iswix-llc/IsWiX)
 
 ## How to use it?
